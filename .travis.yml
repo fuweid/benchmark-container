@@ -1,0 +1,19 @@
+# pouchcontainer needs /lib/init/init-d-script
+dist: xenial
+
+sudo: required
+
+language: go
+go:
+  - 1.10.4
+
+before_install: |
+  # need the systemctl command
+  sudo apt-get install --reinstall systemd
+  sudo systemctl daemon-reload
+
+script: |
+  set -e # fast fail
+  scripts/install_bucketbench.sh
+  make rundockercli
+  make runpouchcli

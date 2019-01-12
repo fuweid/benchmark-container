@@ -1,0 +1,13 @@
+image: alpine:latest
+command: top
+detached: true
+drivers:
+  -
+   clientpath: pouch
+   type: DockerCLI
+   threads: 3
+   iterations: 10
+commands:
+  - run
+  - stop
+  - remove
